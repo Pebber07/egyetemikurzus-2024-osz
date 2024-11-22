@@ -63,8 +63,38 @@ namespace HQ35PU_IKLUMR
                         return "Pirc";
                     if (number >= 10 && number <= 19)
                         return "CaroKann";
-                    if (number >= 20 && number <= 99)
-                        return "Szicíliai";
+                    if (number == 20 || number == 21 || number == 27 || number == 28 || number == 29 || number == 50 || number == 53 || number == 54)
+                        return "Szicíliai mellékvarik";
+                    if (number == 22)
+                        return "Alapin";
+                    if (number == 23)
+                        return "Grand Prix";
+                    if (number >= 24 || number <= 26)
+                        return "Zárt szicíliai";
+                    if (number == 30 || number == 31)
+                        return "Rossolimo";
+                    if (number == 32)
+                        return "Kalasnyikov";
+                    if (number == 33)
+                        return "Svesnyikov";
+                    if (number >= 34 && number <= 39)
+                        return "SzicíliaiGyorsítottFianchetto";
+                    if (number == 40 || number == 44)
+                        return "Paulsen";
+                    if (number >= 41 && number <= 43)
+                        return "KanPaulsen";
+                    if (number >= 45 && number <= 49)
+                        return "Taimanov";
+                    if (number == 51 || number == 52)
+                        return "Moszkvai";
+                    if (number == 55 || number == 56 || (number >= 90 && number <= 99))
+                        return "Najdorf";
+                    if (number >= 57 && number <= 69)
+                        return "KlasszikusSzicíliai";
+                    if (number >= 70 && number <= 79)
+                        return "Sárkány";
+                    if (number >= 80 && number <= 89)
+                        return "Scheveningeni";
                     break;
 
                 case 'C':
