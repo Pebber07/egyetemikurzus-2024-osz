@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HQ35PU_IKLUMR.Model
+namespace HQ35PUIKLUMR.Model
 {
     internal class Game
     {

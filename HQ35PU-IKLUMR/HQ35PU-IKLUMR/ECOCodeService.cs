@@ -1,13 +1,24 @@
 ﻿
-namespace HQ35PU_IKLUMR
+namespace HQ35PUIKLUMR
 {
-    internal class ECOCodeService
+    public class ECOCodeService
     {
-        internal static string GetOpeningName(string eco)
+        public static string GetOpeningName(string eco)
         {
+
+            if (string.IsNullOrEmpty(eco))
+            {
+                return "Hiba"; 
+            }
+
             char category = eco[0];
             
             int number = int.Parse(eco.Substring(1));
+
+            if(!(category >= 'A' && category <= 'E') || !(number >= 0 &&  number <= 99))
+            {
+                return "Hiba";
+            }
 
             switch (category)
             {

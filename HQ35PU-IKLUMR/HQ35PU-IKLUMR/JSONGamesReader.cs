@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using HQ35PU_IKLUMR.Model;
+using HQ35PUIKLUMR.Model;
 
-namespace HQ35PU_IKLUMR
+namespace HQ35PUIKLUMR
 {
     internal class JSONGamesReader : IJSONGamesReader
     {
