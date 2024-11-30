@@ -19,15 +19,18 @@ namespace HQ35PUIKLUMR
             {
                 string jsonContent = File.ReadAllText(jsonPath);
 
-                var games = JsonSerializer.Deserialize<List<Game>>(jsonContent);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString
+                };
+
+                var games = JsonSerializer.Deserialize<List<Game>>(jsonContent, options);
 
                 if (games == null)
                     throw new InvalidOperationException("JSON feldolgozása sikertelen!");
 
-                foreach (var game in games)
-                {
-                    game.Opening = ECOCodeService.GetOpeningName(game.Opening);
-                }
+                
 
                 return games;
             }

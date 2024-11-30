@@ -8,16 +8,31 @@ namespace HQ35PUIKLUMR.Model
 {
     internal class Game
     {
-        public string White_name { get; set; }
-        public string Black_name { get; set; }
-        public int White_elo { get; set; }
-        public int Black_elo { get; set; }
-        public string Result { get; set; }
-        public string Opening { get; set; }
-        public string Tournament { get; set; }
-        public DateTime Date { get; set; }
-        public string Moves { get; set; }
-        public int Moves_number { get; set; }
+        public string White_name { get; }
+        public string Black_name { get;}
+        public int White_elo { get; }
+        public int Black_elo { get; }
+        public string Result { get; }
+        public string Opening { get; }
+        public string Tournament { get; }
+        public DateTime Date { get; }
+        public string Moves { get; }
+        public int Moves_number { get;}
 
+        public Game(string white_name, string black_name, int white_elo, int black_elo, string result, string opening, string tournament, DateTime date, string moves, int moves_number)
+        {
+            White_name = white_name;
+            Black_name = black_name;
+            White_elo = white_elo;
+            Black_elo = black_elo;
+            Result = result;
+            Opening = ECOCodeService.GetOpeningName(opening);
+            Tournament = tournament;
+            Date = date;
+            Moves = moves;
+            Moves_number = moves_number;
+        }
     }
+
+    
 }
