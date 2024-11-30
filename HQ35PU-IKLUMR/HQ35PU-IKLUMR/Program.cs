@@ -12,53 +12,58 @@ internal class Program
         string fullPath = Path.Combine(projectRoot, "Data", "games.json");
         games = reader.Read(fullPath);
 
+        Console.WriteLine("Üdvözöllek a sakk statisztikai programunkban!");
+        Console.WriteLine("Kérlek nyomj Enter billentyűt a folytatáshoz.");
 
-
-        //TODO: Ide kellene az üdvözlő szöveg és adatok a lehetséges parancsokról
-        
-
-
-        string input;
-        while (true)
+        ConsoleKeyInfo key = Console.ReadKey();
+        if (key.Key == ConsoleKey.Enter)
         {
-            input = Console.ReadLine();
+            Console.WriteLine("A programban a '-kulcsszó' kapcsoló segítségével tudod majd koordinálni magad.");
+            Console.WriteLine("A lehetséges parancsok: \n-players (játékosok kilistázása)" +
+                                                       "\n-elo <szám> (átlag elő és top <szám> játékos elője és átlagok)" +
+                                                        "\n-stop (kilépés a programból)");
 
-            if (!string.IsNullOrEmpty(input))
+            string input;
+            while (true)
             {
-                if (input.Equals("stop"))
-                {
-                    break;
-                }
+                input = Console.ReadLine();
 
-
-                if (input.ToLower().Equals("players"))
+                if (!string.IsNullOrEmpty(input))
                 {
-                    ListPlayers();
-                }
-
-                if (input.ToLower().StartsWith("elo"))
-                {
-                    var parts = input.Split(' ');
-                    if (parts.Length == 2 && int.TryParse(parts[1], out int topCount))
+                    if (input.Equals("-stop"))
                     {
-                        if(topCount <=0)
-                        {
-                            Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
-                        }
-                        if (topCount > 100)
-                        {
-                            Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 100 lehet");
-                        }
-                        ListElo(topCount);
+                        break;
                     }
-                    else
+
+
+                    if (input.ToLower().Equals("-players"))
                     {
-                        Console.WriteLine("Érvénytelen paraméter. Használat: elo <szám>");
+                        ListPlayers();
+                    }
+
+                    if (input.ToLower().StartsWith("-elo"))
+                    {
+                        var parts = input.Split(' ');
+                        if (parts.Length == 2 && int.TryParse(parts[1], out int topCount))
+                        {
+                            if (topCount <= 0)
+                            {
+                                Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
+                            }
+                            if (topCount > 100)
+                            {
+                                Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 100 lehet");
+                            }
+                            ListElo(topCount);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Érvénytelen paraméter. Használat: elo <szám>");
+                        }
                     }
                 }
             }
-        }
-        
+        }   
     }
 
     public static void ListPlayers()
