@@ -1,4 +1,6 @@
-﻿using HQ35PUIKLUMR;
+﻿using HQ35PU_IKLUMR.Statistics;
+
+using HQ35PUIKLUMR;
 using HQ35PUIKLUMR.Model;
 
 internal class Program
@@ -21,7 +23,8 @@ internal class Program
             Console.WriteLine("A programban a '-kulcsszó' kapcsoló segítségével tudod majd koordinálni magad.");
             Console.WriteLine("A lehetséges parancsok: \n-players (játékosok kilistázása)" +
                                                        "\n-elo <szám> (átlag elő és top <szám> játékos elője és átlagok)" +
-                                                        "\n-stop (kilépés a programból)");
+                                                        "\n-exit (kilépés a programból)" +
+                                                        "\n-quickestwongames <szám> (Kiírja a <szám> darab legrövidebb eldőlt játszmát)");
 
             string input;
             while (true)
@@ -30,18 +33,18 @@ internal class Program
 
                 if (!string.IsNullOrEmpty(input))
                 {
-                    if (input.Equals("-stop"))
+                    if (input.Equals("-exit"))
                     {
                         break;
                     }
 
 
-                    if (input.ToLower().Equals("-players"))
+                    else if (input.ToLower().Equals("-players"))
                     {
-                        ListPlayers();
+                        PlayersLister.ListPlayers(games);
                     }
 
-                    if (input.ToLower().StartsWith("-elo"))
+                    else if (input.ToLower().StartsWith("-elo"))
                     {
                         var parts = input.Split(' ');
                         if (parts.Length == 2 && int.TryParse(parts[1], out int topCount))
@@ -54,69 +57,45 @@ internal class Program
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 100 lehet");
                             }
-                            ListElo(topCount);
+                            AverageEloLister.ListElo(games, topCount);
                         }
                         else
                         {
                             Console.WriteLine("Érvénytelen paraméter. Használat: elo <szám>");
                         }
                     }
+
+                    else if (input.ToLower().StartsWith("-quickestwongames"))
+                    {
+                        var parts = input.Split(' ');
+                        if (parts.Length == 2 && int.TryParse(parts[1], out int number))
+                        {
+                            if (number <= 0)
+                            {
+                                Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
+                            }
+                            if (number > 100)
+                            {
+                                Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 100 lehet");
+                            }
+                            QuickestWonGamesFinder.FindQuickestWonGames(games, number);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Érvénytelen paraméter. Használat: -quickestwongames <szám>");
+                        }
+
+                    }
+                    else if (!input.StartsWith('-'))
+                    {
+                        Console.WriteLine($"Próbáld meg \"-{input}\" alakban");
+                    }
+                    else { 
+                        Console.WriteLine($"Az \"{input}\" nem felismerhető parancs.");
+                    }
                 }
             }
-        }   
-    }
-
-    public static void ListPlayers()
-    {
-        List<string> players = new List<string>();
-
-        for (int i = 0; i < games.Count; i++) 
-        {
-            if (!players.Contains(games[i].White_name))
-            {
-                players.Add(games[i].White_name);
-            }
-            if (!players.Contains(games[i].Black_name))
-            {
-                players.Add(games[i].Black_name);
-            }
         }
-
-        players.Sort();
-
-        for (int i = 0; i < players.Count; i++) 
-        { 
-            Console.WriteLine(players[i]);
-        }
-    }
-
-    public static void ListElo(int topCount)
-    {
-        var playersWithElo = games.SelectMany(game => new[]
-        {
-        new { Player = game.White_name, Elo = game.White_elo },
-        new { Player = game.Black_name, Elo = game.Black_elo }
-    })
-        .GroupBy(player => player.Player)
-        .Select(group => new
-        {
-            Player = group.Key,
-            MaxElo = group.Max(player => player.Elo)  
-        })
-    .OrderByDescending(player => player.MaxElo)
-        .ToList();
-
-        var averageElo = playersWithElo.Average(player => player.MaxElo);
-        Console.WriteLine($"Az összes játékos átlagos ELO pontja: {averageElo:F2}");
-
-        Console.WriteLine($"\nTop {topCount} legmagasabb ELO-val rendelkező játékos:");
-        foreach (var player in playersWithElo.Take(topCount))
-        {
-            Console.WriteLine($"{player.Player}: {player.MaxElo:F0}");
-        }
-
-        var topAvgElo = playersWithElo.Take(topCount).Average(player => player.MaxElo);
-        Console.WriteLine($"\nA top {topCount} legmagasabb ELO-vel rendelkező játékos átlagos ELO pontszáma: {topAvgElo:F2}");
     }
 
 }

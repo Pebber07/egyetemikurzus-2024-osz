@@ -9,7 +9,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PUIKLUMR
 {
-    internal class JSONGamesReader : IJSONGamesReader
+    internal class JSONGamesReader 
     {
         
 
