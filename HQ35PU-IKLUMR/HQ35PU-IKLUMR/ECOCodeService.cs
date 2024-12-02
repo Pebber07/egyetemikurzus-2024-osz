@@ -80,7 +80,7 @@ namespace HQ35PUIKLUMR
                         return "Alapin";
                     if (number == 23)
                         return "Grand Prix";
-                    if (number >= 24 || number <= 26)
+                    if (number >= 24 && number <= 26)
                         return "Zárt szicíliai";
                     if (number == 30 || number == 31)
                         return "Rossolimo";
