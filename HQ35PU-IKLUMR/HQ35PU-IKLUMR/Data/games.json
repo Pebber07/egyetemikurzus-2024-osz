@@ -18792,18 +18792,6 @@
         "Moves_number": 40
     },
     {
-        "White_name": "Ruck, Robert",
-        "White_elo": "2537",
-        "Black_name": "Czebe, Attila",
-        "Black_elo": "2365",
-        "Result": "1-0",
-        "Opening": "A04",
-        "Tournament": "Szuperliga",
-        "Date": "2023-01-29",
-        "Moves": "Nf3",
-        "Moves_number": 1
-    },
-    {
         "White_name": "Pasti, Aron",
         "White_elo": "2382",
         "Black_name": "Neugebauer, Martin",

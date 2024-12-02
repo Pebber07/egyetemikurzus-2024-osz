@@ -182,7 +182,7 @@ namespace HQ35PUIKLUMR
                     break;
 
                 default:
-                    return "Hiba";
+                    return "Egyéb";
                     
             } 
 
