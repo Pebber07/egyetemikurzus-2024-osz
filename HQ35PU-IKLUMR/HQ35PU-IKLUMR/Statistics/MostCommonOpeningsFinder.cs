@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class MostCommonOpeningsFinder
+    public class MostCommonOpeningsFinder
     {
         public static void FindMostCommonOpeningsWithResults(List<Game> games, int number = 5)
         {

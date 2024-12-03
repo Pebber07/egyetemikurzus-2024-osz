@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HQ35PUIKLUMR.Model
 {
-    internal class Game
+    public class Game
     {
         public string White_name { get; }
         public string Black_name { get;}

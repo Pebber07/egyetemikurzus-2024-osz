@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class AverageEloLister
+    public class AverageEloLister
     {
         public static void ListElo(List<Game> games, int topCount)
         {

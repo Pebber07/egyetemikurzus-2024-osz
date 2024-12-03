@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class LongestGamesFinder
+    public class LongestGamesFinder
     {
         public static void FindLongestGames(List<Game> games, int number = 1)
         {

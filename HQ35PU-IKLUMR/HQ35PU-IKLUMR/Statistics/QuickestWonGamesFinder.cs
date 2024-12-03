@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal static class QuickestWonGamesFinder
+    public static class QuickestWonGamesFinder
     {
         public static void FindQuickestWonGames(List<Game> games, int number = 1)
         {
