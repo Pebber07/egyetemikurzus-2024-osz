@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class WinRateLister
+    internal class PlayerWinRateLister
     {
         public static void showPlayerWinRates(List<Game> games, string playerName = "Tapodi, Norman Lajos")
         {
