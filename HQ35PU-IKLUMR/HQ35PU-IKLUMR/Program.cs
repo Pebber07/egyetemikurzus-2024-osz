@@ -27,7 +27,9 @@ internal class Program
                                                         "\n-quickestwongames <szám> (Kiírja a <szám> darab legrövidebb eldőlt játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.)" +
                                                         "\n-longestgames <szám> (Kiírja a <szám> darab leghosszabb játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.) " +
                                                         "\n-mostcommonopenings <szám> (Kiírja a <szám> darab leggyakoribb megnyitást a nyerési arányokkal. Ha nem adsz meg számot, akkor alapértelmezetten 1 nyitást ad vissza.)" +
-                                                        "\n-bestwinrateopenings <szín> <szám> (Kiírja a megadott színnel a <szám> darab legjobb nyerési arányú nyitást. Ha nem adsz meg számot, akkor alapértelmezetten 1 nyitást ad vissza.)");
+                                                        "\n-bestwinrateopenings <szín> <szám> (Kiírja a megadott színnel a <szám> darab legjobb nyerési arányú nyitást. Ha nem adsz meg számot, akkor alapértelmezetten 1 nyitást ad vissza.)" +
+                                                        "\n-winrate <játékos neve> (Kilistázza az adott játékos Nyerés-Döntetlen-Veszteség statisztikáit.)"
+                                                        );
 
             string input;
             while (true)
@@ -156,6 +158,26 @@ internal class Program
                             Console.WriteLine("Érvénytelen paraméter. Használat: -quickestwongames <szám>");
                         }
 
+                    }
+                    else if (input.ToLower().StartsWith("-winrate"))
+                    {
+                        var parts = input.Split(' ');
+
+                        if (parts.Length == 3)
+                        {
+                            string playerName = $"{parts[1]} {parts[2]}";
+                            WinRateLister.showPlayerWinRates(games, playerName);
+                        }
+                        else if (parts.Length == 4)
+                        {
+                            string thirdName = parts[3] == "" ? "" : parts[3];
+                            string playerName = $"{parts[1]} {parts[2]} {thirdName}" ;
+                            WinRateLister.showPlayerWinRates(games, playerName);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Érvénytelen paraméter. Használat: -winrate <játékos neve>");
+                        }
                     }
                     else if (!input.StartsWith('-'))
                     {
