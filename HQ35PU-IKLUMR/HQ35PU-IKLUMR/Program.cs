@@ -22,6 +22,7 @@ internal class Program
         {
             Console.WriteLine("A programban a '-kulcsszó' kapcsoló segítségével tudod majd koordinálni magad.");
             Console.WriteLine("A lehetséges parancsok: \n-players (játékosok kilistázása)" +
+                                                       "\n-openings (megnyitások kilistázása)" +
                                                        "\n-elo <szám> (átlag elő és top <szám> játékos elője és átlagok)" +
                                                         "\n-exit (kilépés a programból)" +
                                                         "\n-quickestwongames <szám> (Kiírja a <szám> darab legrövidebb eldőlt játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.)" +
@@ -48,6 +49,10 @@ internal class Program
                     else if (input.ToLower().Equals("-players"))
                     {
                         PlayersLister.ListPlayers(games);
+                    }
+                    else if (input.ToLower().StartsWith("-openings"))
+                    {
+                        OpeningsLister.ListOpenings(games);
                     }
 
                     else if (input.ToLower().StartsWith("-elo"))
