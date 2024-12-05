@@ -79,17 +79,17 @@ internal class Program
                     else if (input.ToLower().StartsWith("-quickestwongames"))
                     {
                         var parts = input.Split(' ');
-                        if (parts.Length == 2 && int.TryParse(parts[1], out int number))
+                        if (parts.Length == 2 && int.TryParse(parts[1], out int gamesNumber))
                         {
-                            if (number <= 0)
+                            if (gamesNumber <= 0)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
                             }
-                            if (number > 100)
+                            if (gamesNumber > 100)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 100 lehet");
                             }
-                            QuickestWonGamesFinder.FindQuickestWonGames(games, number);
+                            QuickestWonGamesFinder.FindQuickestWonGames(games, gamesNumber);
                         }
                         else
                         {
@@ -100,68 +100,68 @@ internal class Program
                     else if (input.ToLower().StartsWith("-longestgames"))
                     {
                         var parts = input.Split(' ');
-                        if (parts.Length == 2 && int.TryParse(parts[1], out int number))
+                        if (parts.Length == 2 && int.TryParse(parts[1], out int gamesNumber))
                         {
-                            if (number <= 0)
+                            if (gamesNumber <= 0)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
                             }
-                            if (number > 100)
+                            if (gamesNumber > 100)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 100 lehet");
                             }
-                            LongestGamesFinder.FindLongestGames(games, number);
+                            LongestGamesFinder.FindLongestGames(games, gamesNumber);
                         }
                         else
                         {
-                            Console.WriteLine("Érvénytelen paraméter. Használat: -quickestwongames <szám>");
+                            Console.WriteLine("Érvénytelen paraméter. Használat: -longestgames <szám>");
                         }
 
                     }
                     else if (input.ToLower().StartsWith("-mostcommonopenings"))
                     {
                         var parts = input.Split(' ');
-                        if (parts.Length == 2 && int.TryParse(parts[1], out int number))
+                        if (parts.Length == 2 && int.TryParse(parts[1], out int openingsNumber))
                         {
-                            if (number <= 0)
+                            if (openingsNumber <= 0)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
                             }
-                            if (number > 20)
+                            if (openingsNumber > 20)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 20 lehet");
                             }
-                            MostCommonOpeningsFinder.FindMostCommonOpeningsWithResults(games, number);
+                            MostCommonOpeningsFinder.FindMostCommonOpeningsWithResults(games, openingsNumber);
                         }
                         else
                         {
-                            Console.WriteLine("Érvénytelen paraméter. Használat: -quickestwongames <szám>");
+                            Console.WriteLine("Érvénytelen paraméter. Használat: -mostcommonopenings <szám>");
                         }
 
                     }
                     else if (input.ToLower().StartsWith("-bestwinrateopenings"))
                     {
                         var parts = input.Split(' ');
-                        if (parts.Length == 3 && int.TryParse(parts[2], out int number))
+                        if (parts.Length == 3 && int.TryParse(parts[2], out int openingsNumber))
                         {
                             if (!parts[1].ToLower().Equals("white") || !parts[1].ToLower().Equals("black"))
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szín lehetséges értékei \"white\" vagy \"black\".");
 
                             }
-                            if (number <= 0)
+                            if (openingsNumber <= 0)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám nagyobb, mint 0.");
                             }
-                            if (number > 20)
+                            if (openingsNumber > 20)
                             {
                                 Console.WriteLine("Érvénytelen paraméter. A szám legfeljebb 20 lehet");
                             }
-                            BestWinRateOpenings.FindBestWinRateOpenings(games, parts[1], number);
+                            BestWinRateOpenings.FindBestWinRateOpenings(games, parts[1], openingsNumber);
                         }
                         else
                         {
-                            Console.WriteLine("Érvénytelen paraméter. Használat: -quickestwongames <szám>");
+                            Console.WriteLine("Érvénytelen paraméter. Használat: -bestwinrateopenings <szám>");
                         }
 
                     }

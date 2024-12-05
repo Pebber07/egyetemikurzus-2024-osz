@@ -6,7 +6,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class OpeningWinRateLister
+    public class OpeningWinRateLister
     {
         public static void ShowOpeningWinRates(List<Game> games, string openingName = "Királycsel")
         {
@@ -31,8 +31,8 @@ namespace HQ35PU_IKLUMR.Statistics
                 double lossRate = (double)lostGames / totalGames * 100;
 
                 Console.WriteLine($"{openingName} nyitás statisztikái:");
-                Console.WriteLine($"Nyert partik: {wonGames} ({winRate:F2}%)");
-                Console.WriteLine($"Döntetlen partik: {drawGames} ({drawRate:F2}%)");
+                Console.WriteLine($"Gyõzelmek: {wonGames} ({winRate:F2}%)");
+                Console.WriteLine($"Döntetlen: {drawGames} ({drawRate:F2}%)");
                 Console.WriteLine($"Vereségek: {lostGames} ({lossRate:F2}%)");
             }
             else

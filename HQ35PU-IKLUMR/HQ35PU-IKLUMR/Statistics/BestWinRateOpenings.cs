@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class BestWinRateOpenings
+    public class BestWinRateOpenings
     {
         public static void FindBestWinRateOpenings(List<Game> games, string playerColor, int number = 1)
         {

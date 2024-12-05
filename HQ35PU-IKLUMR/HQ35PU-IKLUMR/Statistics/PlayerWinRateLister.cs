@@ -8,7 +8,7 @@ using HQ35PUIKLUMR.Model;
 
 namespace HQ35PU_IKLUMR.Statistics
 {
-    internal class PlayerWinRateLister
+    public class PlayerWinRateLister
     {
         public static void showPlayerWinRates(List<Game> games, string playerName = "Tapodi, Norman Lajos")
         {
@@ -35,13 +35,13 @@ namespace HQ35PU_IKLUMR.Statistics
                 double lossRate = (double)lostGames / totalGames * 100;
 
                 Console.WriteLine($"{playerName} statisztikái:");
-                Console.WriteLine($"Nyert partik: {wonGames} ({winRate:F2}%)");
-                Console.WriteLine($"Döntetlen partik: {drawGames} ({drawRate:F2}%)");
+                Console.WriteLine($"Gyõzelmek: {wonGames} ({winRate:F2}%)");
+                Console.WriteLine($"Döntetlen: {drawGames} ({drawRate:F2}%)");
                 Console.WriteLine($"Vereségek: {lostGames} ({lossRate:F2}%)");
             }
             else
             {
-                Console.WriteLine($"{playerName} nem szerepelt a megadott játékok között.");
+                Console.WriteLine($"{playerName} nem szerepelt a megadott partik között.");
             }
         }
     }
