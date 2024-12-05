@@ -21,9 +21,10 @@ internal class Program
         if (key.Key == ConsoleKey.Enter)
         {
             Console.WriteLine("A programban a '-kulcsszó' kapcsoló segítségével tudod majd koordinálni magad.");
-            Console.WriteLine("A lehetséges parancsok: \n-players (játékosok kilistázása)" +
-                                                       "\n-openings (megnyitások kilistázása)" +
-                                                       "\n-elo <szám> (átlag elő és top <szám> játékos elője és átlagok)" +
+            Console.WriteLine("A lehetséges parancsok:   \n-players (játékosok kilistázása)" +
+                                                        "\n-listcommands (parancsok kilistázása)" +
+                                                        "\n-openings (megnyitások kilistázása)" +
+                                                        "\n-elo <szám> (átlag elő és top <szám> játékos elője és átlagok)" +
                                                         "\n-exit (kilépés a programból)" +
                                                         "\n-quickestwongames <szám> (Kiírja a <szám> darab legrövidebb eldőlt játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.)" +
                                                         "\n-longestgames <szám> (Kiírja a <szám> darab leghosszabb játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.) " +
@@ -44,7 +45,21 @@ internal class Program
                     {
                         break;
                     }
-
+                    if (input.ToLower().Equals("-listcommands")) 
+                    {
+                        Console.WriteLine("A lehetséges parancsok:   \n-players (játékosok kilistázása)" +
+                                                                    "\n-listcommands (parancsok kilistázása)" +
+                                                                    "\n-openings (megnyitások kilistázása)" +
+                                                                    "\n-elo <szám> (átlag elő és top <szám> játékos elője és átlagok)" +
+                                                                    "\n-exit (kilépés a programból)" +
+                                                                    "\n-quickestwongames <szám> (Kiírja a <szám> darab legrövidebb eldőlt játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.)" +
+                                                                    "\n-longestgames <szám> (Kiírja a <szám> darab leghosszabb játszmát. Ha nem adsz meg számot, akkor alapértelmezetten 1 játszmát ad vissza.) " +
+                                                                    "\n-mostcommonopenings <szám> (Kiírja a <szám> darab leggyakoribb megnyitást a nyerési arányokkal. Ha nem adsz meg számot, akkor alapértelmezetten 1 nyitást ad vissza.)" +
+                                                                    "\n-bestwinrateopenings <szín> <szám> (Kiírja a megadott színnel a <szám> darab legjobb nyerési arányú nyitást. Ha nem adsz meg számot, akkor alapértelmezetten 1 nyitást ad vissza.)" +
+                                                                    "\n-playerwinrate <játékos neve> (Kilistázza az adott játékos nyerés-döntetlen-veszteség statisztikáit.)" +
+                                                                    "\n-openingwinrate <megnyitás neve> (Kilistázza az adott megnyitás nyerés-döntetlen-veszteség statisztikáit.)"
+                                                                    );
+                    }
 
                     else if (input.ToLower().Equals("-players"))
                     {
